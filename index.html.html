@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Valiant AI - Done-For-You AI Systems That Bring Clients To You</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg: #0d0020;
+  --bg2: #1a0040;
+  --bg3: #2a0060;
+  --accent: #f5c018;
+  --accent2: #c9a84c;
+  --accent-light: #fde68a;
+  --text-primary: #ffffff;
+  --text-secondary: #e8d5ff;
+  --text-muted: #c4a0ff;
+  --border: rgba(245,192,24,0.2);
+  --card-bg: rgba(13,0,32,0.8);
+  --nav-bg: rgba(13,0,32,0.92);
+  --hero-glow: rgba(102,0,204,0.35);
+  --section-alt: rgba(26,0,64,0.5);
+  --btn-text: #0d0020;
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Outfit", sans-serif;
+  --font-hv: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--font-body);font-weight:300;font-size:1.15rem;line-height:1.8;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(102,0,204,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(102,0,204,0.07) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,192,24,0.15);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo-text{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:#ffffff;letter-spacing:0.05em;}
+.nav-logo-text span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:1.4rem;list-style:none;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.85rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent)!important;color:#0d0020!important;padding:0.5rem 1.1rem;border-radius:4px;font-weight:600!important;}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 4rem 6rem;overflow:hidden;z-index:1;background:#0d0020;}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--hero-glow) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-content{position:relative;text-align:center;max-width:900px;z-index:2;}
+.hero-badge{display:inline-block;border:1px solid rgba(245,192,24,0.4);color:var(--accent);font-size:0.85rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;padding:0.5rem 1.3rem;border-radius:100px;margin-bottom:2rem;background:rgba(245,192,24,0.06);}
+.hero-headline{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.8rem);font-weight:700;line-height:1.08;margin-bottom:1.5rem;color:#ffffff;}
+.hero-headline .accent{color:var(--accent);}
+.hero-sub{font-size:1.3rem;font-weight:300;color:#d4bbff;max-width:620px;margin:0 auto 2.5rem;line-height:1.8;}
+.hero-cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--btn-text);padding:1.1rem 2.6rem;border-radius:6px;font-family:var(--font-body);font-size:1.05rem;font-weight:600;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;transition:all 0.2s;border:none;cursor:pointer;display:inline-block;}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(204,0,0,0.3);}
+.btn-ghost{background:transparent;color:#ffffff;padding:1.1rem 2.6rem;border-radius:6px;font-family:var(--font-body);font-size:1.05rem;font-weight:400;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;transition:all 0.2s;border:1px solid rgba(255,255,255,0.3);display:inline-block;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(245,192,24,0.12);}
+.stat{text-align:center;}
+.stat-number{font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--accent);display:block;line-height:1;}
+.stat-label{font-size:0.9rem;color:#d4bbff;text-transform:uppercase;letter-spacing:0.12em;margin-top:0.4rem;}
+section{position:relative;z-index:1;padding:6rem 4rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-label{font-size:0.88rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem;color:var(--text-primary);}
+.section-sub{font-size:1.2rem;color:var(--text-muted);line-height:1.8;}
+.services{background:var(--section-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:8px;padding:2rem;transition:transform 0.2s,box-shadow 0.2s;}
+.service-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.service-icon{width:52px;height:52px;background:rgba(245,192,24,0.1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.3rem;}
+.service-title{font-family:var(--font-hv);font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.8rem;color:var(--accent);}
+.service-desc{font-size:1.1rem;color:var(--text-secondary);line-height:1.7;}
+.serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.serve-card{border:1px solid var(--border);border-radius:8px;padding:1.8rem;background:rgba(42,0,96,0.3);display:flex;align-items:flex-start;gap:1rem;transition:background 0.2s;}
+.serve-card:hover{background:rgba(42,0,96,0.6);}
+.serve-dot{width:10px;height:10px;min-width:10px;background:var(--accent);border-radius:50%;margin-top:0.6rem;}
+.serve-text{font-size:1.2rem;color:var(--accent);font-weight:600;font-family:var(--font-hv);}
+.serve-sub{font-size:1rem;color:var(--text-secondary);margin-top:0.3rem;}
+.how{background:linear-gradient(180deg,transparent,rgba(26,0,64,0.4),transparent);}
+.steps{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;gap:0;margin-top:3.5rem;}
+.step{background:rgba(13,0,32,0.9);border:1px solid var(--border);border-radius:10px;padding:2.5rem 2rem;text-align:center;}
+.step-num{font-family:var(--font-display);font-size:4.5rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:0.8rem;}
+.step-title{font-family:var(--font-hv);font-size:1.5rem;font-weight:700;text-transform:uppercase;color:var(--text-primary);margin-bottom:0.8rem;}
+.step-desc{font-size:1.1rem;color:var(--text-secondary);line-height:1.7;}
+.step-arrow{text-align:center;color:var(--accent2);font-size:1.8rem;opacity:0.6;}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;align-items:start;}
+.tier-card{background:#ffffff;border:2px solid var(--accent);border-radius:10px;overflow:hidden;transition:transform 0.2s;box-shadow:0 4px 24px rgba(0,0,0,0.15);}
+.tier-card:hover{transform:translateY(-4px);}
+.tier-card.featured{border:4px solid var(--accent);box-shadow:0 8px 40px rgba(245,192,24,0.3);}
+.tier-header{padding:1.8rem 2rem;border-bottom:2px solid var(--accent);background:#0d0020;}
+.tier-badge{display:inline-block;font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:100px;margin-bottom:0.8rem;background:rgba(245,192,24,0.12);color:var(--accent);border:1px solid var(--border);}
+.tier-badge.popular{background:var(--accent);color:#0d0020;}
+.tier-name{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:#ffffff;margin-bottom:0.5rem;}
+.tier-tagline{font-size:1.2rem;color:var(--lavender);}
+.tier-body{padding:1.8rem 2rem;background:#ffffff;}
+.tier-price{font-family:var(--font-display);font-size:1.7rem;font-weight:700;color:#2a0060;margin-bottom:0.3rem;}
+.tier-price-sub{font-size:1.1rem;color:#555555;margin-bottom:1.2rem;}
+.tier-includes{font-size:1rem;letter-spacing:0.12em;text-transform:uppercase;color:#2a0060;margin-bottom:1rem;font-weight:700;}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.2rem;}
+.tier-list li{font-size:1.2rem;color:#1a1a1a;padding-left:1.3rem;position:relative;}
+.tier-list li::before{content:"";position:absolute;left:0;top:0.6em;width:7px;height:7px;background:var(--accent);border-radius:50%;}
+.tier-launch{font-size:1.1rem;color:#2a0060;font-style:italic;padding-top:0.8rem;border-top:2px solid var(--accent);font-weight:600;}
+.addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem;}
+.addon-card{background:rgba(13,0,32,0.8);border:1px solid var(--border);border-radius:8px;padding:1.8rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
+.addon-name{font-size:1.3rem;color:var(--accent);font-weight:600;}
+.addon-desc{font-size:1.1rem;color:#ffffff;margin-top:0.3rem;line-height:1.7;}
+.addon-price{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--accent);white-space:nowrap;}
+.case-study{border-top:1px solid var(--border);}
+.case-tabs{display:flex;gap:0.6rem;margin-top:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.case-tab{padding:0.65rem 1.3rem;border-radius:100px;font-size:0.85rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:var(--font-body);transition:all 0.2s;text-transform:uppercase;}
+.case-tab:hover{border-color:var(--accent);color:var(--accent);}
+.case-tab.active{background:var(--accent);color:#0d0020;border-color:var(--accent);}
+.case-panel{display:none;}.case-panel.active{display:block;}
+.case-card,.case-card-sm{border:1px solid rgba(201,168,76,0.3);border-left:4px solid var(--accent);border-radius:10px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.case-card{background:linear-gradient(135deg,rgba(13,74,48,0.6),rgba(13,0,32,0.9));}
+.case-card-sm{background:linear-gradient(135deg,rgba(42,0,96,0.5),rgba(13,0,32,0.9));}
+.case-label{font-size:0.88rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;}
+.case-title{font-family:var(--font-display);font-size:1.9rem;font-weight:700;margin-bottom:1rem;line-height:1.2;color:var(--text-primary);}
+.case-desc{font-size:1.05rem;color:var(--text-secondary);line-height:1.8;margin-bottom:0.8rem;}
+.case-results{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.result-item{background:rgba(13,0,32,0.6);border:1px solid var(--border);border-radius:8px;padding:1.4rem;text-align:center;}
+.result-value{font-family:var(--font-display);font-size:2.3rem;font-weight:700;color:var(--accent);display:block;}
+.result-label{font-size:0.9rem;color:var(--text-secondary);margin-top:0.3rem;}
+.creds-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem;}
+.cred-card{background:rgba(26,0,64,0.5);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:8px;padding:2rem;}
+.cred-category{font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-weight:700;}
+.cred-list{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
+.cred-list li{font-size:1.05rem;color:#ffffff;padding-left:1rem;border-left:3px solid var(--accent2);}
+.cta-section{text-align:center;padding:7rem 4rem;background:#0d0020;}
+.cta-box{max-width:750px;margin:0 auto;background:rgba(26,0,64,0.6);border:1px solid var(--border);border-radius:16px;padding:4rem 3rem;position:relative;overflow:hidden;}
+.cta-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+.cta-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;margin-bottom:1rem;line-height:1.2;color:#ffffff;}
+.cta-sub{color:#d4bbff;font-size:1.25rem;margin-bottom:2.2rem;line-height:1.8;}
+footer{border-top:1px solid var(--border);padding:2.5rem 4rem;background:var(--nav-bg);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:#ffffff;}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:1.5rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:0.88rem;color:#aaaaaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.1em;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-copy{font-size:0.88rem;color:#aaaaaa;}
+@media(max-width:900px){
+  .services-grid,.serve-grid,.tiers-grid,.addon-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}.step-arrow{transform:rotate(90deg);}
+  .case-card,.case-card-sm{grid-template-columns:1fr;}
+  .creds-grid{grid-template-columns:1fr;}
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  section{padding:4rem 1.5rem;}.hero{padding:7rem 1.5rem 4rem;}
+  footer{flex-direction:column;text-align:center;}.footer-links{justify-content:center;}
+  .cta-box{padding:2.5rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-logo"><span class="nav-logo-text">VALIANT <span>AI</span></span></a>
+  <ul class="nav-links">
+    <li><a href="#services">What We Do</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#tiers">Tiers</a></li>
+    <li><a href="#case">Case Studies</a></li>
+    <li><a href="#credentials">Certifications</a></li>
+    <li><a href="https://calendly.com/admin-valiantai/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">AI Automation Agency</div>
+    <h1 class="hero-headline">Done-For-You<br>AI Systems<br>That Bring Clients<br><span class="accent">To You</span></h1>
+    <p class="hero-sub">We build end-to-end client acquisition systems for service-based businesses. Delivered in 14 days. You own it forever.</p>
+    <div class="hero-cta-group">
+      <a href="https://calendly.com/admin-valiantai/30min" target="_blank" class="btn-primary">Book a Free Consultation</a>
+      <a href="#services" class="btn-ghost">See What We Build</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-number">14</span><span class="stat-label">Days to delivery</span></div>
+      <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Client owned</span></div>
+      <div class="stat"><span class="stat-number">7</span><span class="stat-label">Industries served</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Build</p>
+    <h2 class="section-title">Every System. Built For You.</h2>
+    <p class="section-sub">We handle the entire build so you can focus on delivering your service.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">Lead Generation Funnels</div><p class="service-desc">Custom landing pages and opt-in systems designed to attract and capture your ideal client consistently.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">AI-Powered Email Nurture</div><p class="service-desc">Automated email sequences that educate, build trust, and move leads toward a booked call without manual effort.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">Booking and Consultation Systems</div><p class="service-desc">Seamless scheduling infrastructure that eliminates back-and-forth and puts qualified calls on your calendar.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">AI Agents and Automation</div><p class="service-desc">Intelligent workflows that follow up, qualify, and engage leads around the clock without you lifting a finger.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">CRM Setup and Integration</div><p class="service-desc">Full CRM configuration so every lead is tracked, segmented, and followed up with zero leads falling through the cracks.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">Google Business Profile Optimization</div><p class="service-desc">We optimize your GBP listing so your business shows up when local clients are actively searching for exactly what you offer.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">Review Generation and Reputation Management</div><p class="service-desc">We build your review volume and manage your online reputation so new clients trust you before they call.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">AI Chatbot and Website Integration</div><p class="service-desc">We build and embed AI chatbots on your website that qualify leads, answer questions, and book appointments automatically.</p></div>
+      <div class="service-card"><div class="service-icon">&#9670;</div><div class="service-title">End-to-End Funnel Architecture</div><p class="service-desc">The full picture - strategy, design, tech stack, and automation - connected and working as one system.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="serve">
+  <div class="section-inner">
+    <p class="section-label">Who We Serve</p>
+    <h2 class="section-title">Built for Service-Based Business Owners</h2>
+    <p class="section-sub" style="color:var(--accent);">If your business has a great offer but no reliable system to attract and convert the right clients, that is the problem we solve.</p>
+    <div class="serve-grid">
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Real Estate Agents</div><div class="serve-sub">Build a consistent pipeline without cold calling or chasing referrals</div></div></div>
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Financial Professionals</div><div class="serve-sub">Attract qualified clients who are ready to invest in their financial future</div></div></div>
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Consultants and Coaches</div><div class="serve-sub">Turn your expertise into a predictable client acquisition engine</div></div></div>
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Law Offices</div><div class="serve-sub">Automate intake, follow-up, and consultation booking at scale</div></div></div>
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Small Business Owners</div><div class="serve-sub">Stop winging it and build a system that works even when you are not</div></div></div>
+      <div class="serve-card"><div class="serve-dot"></div><div><div class="serve-text">Service-Based Businesses</div><div class="serve-sub">Any business with a great offer and no reliable way to fill the pipeline</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-inner">
+    <p class="section-label">The Process</p>
+    <h2 class="section-title">Three Steps. Fourteen Days.</h2>
+    <p class="section-sub" style="color:var(--accent);">We keep it simple. You brief us, we build it, you own it and run it.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div class="step-title">We Strategize</div><p class="step-desc">We map your offer, your ideal client, and the exact system architecture needed to bring them to you consistently.</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="step-num">02</div><div class="step-title">We Build</div><p class="step-desc">Funnels, automations, email sequences, CRM, AI agents. We build the entire system end-to-end in 14 days.</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="step-num">03</div><div class="step-title">You Own It</div><p class="step-desc">The system is yours. Full ownership, full control. We hand it over with documentation and a walkthrough so you can run it confidently.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tiers" style="background:rgba(20,0,50,0.4);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <p class="section-label">Service Tiers</p>
+    <h2 class="section-title">Choose Your Level.</h2>
+    <p class="section-sub">Start where you are. Scale as you grow.</p>
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-header"><div class="tier-badge">Tier 1</div><div class="tier-name">Local Digital Presence</div><div class="tier-tagline">Get found on Google. Get your profile working. Get a website that converts.</div></div>
+        <div class="tier-body">
+          <div class="tier-price">Setup from $800</div>
+          <div class="tier-price-sub">Monthly retainer from $500/month</div>
+          <p class="tier-includes">What is included</p>
+          <ul class="tier-list">
+            <li>GBP Lite: Full optimization + 12-post content plan. You post.
+              <div style="font-size:1.05rem;color:#555555;margin-top:0.3rem;padding-left:0.2rem;">$800 Setup; $500/month retainer</div>
+            </li>
+            <li>GBP Full: Everything in Lite + we schedule all posts via Publer.
+              <div style="font-size:1.05rem;color:#555555;margin-top:0.3rem;padding-left:0.2rem;">$1,000 Setup; $700/month retainer</div>
+            </li>
+            <li>GBP + Website Bundle: GBP Full + 5-page website + landing page.
+              <div style="font-size:1.05rem;color:#555555;margin-top:0.3rem;padding-left:0.2rem;">$1,500 Setup; $700/month retainer</div>
+            </li>
+            <li>Citation building and NAP consistency</li>
+            <li>Free Visibility Leak Report as entry point</li>
+          </ul>
+          <p class="tier-launch">Best for: Local businesses that need visibility, a professional web presence, and a system to generate reviews and calls.</p>
+        </div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-header"><div class="tier-badge popular">Tier 2 - Most Popular</div><div class="tier-name">AI Appointment Setting</div><div class="tier-tagline">Add AI voice and SMS automation that books appointments around the clock.</div></div>
+        <div class="tier-body">
+          <div class="tier-price">Setup from $2,000</div><div class="tier-price-sub">Monthly retainer from $1,000/month</div>
+          <p class="tier-includes">Everything in Tier 1 plus</p>
+          <ul class="tier-list">
+            <li>AI voice and SMS appointment setting - AI-powered system that contacts, qualifies, and books leads automatically</li>
+            <li>Automated lead follow-up sequences - Short-term text and email sequences that follow up with new leads until they book a call</li>
+            <li>24/7 lead qualification and booking</li>
+            <li>CRM integration and pipeline setup</li>
+            <li>Monthly performance reporting</li>
+            <li>Tier 1 and Tier 2 bundle available</li>
+          </ul>
+          <p class="tier-launch"><a href="https://calendly.com/admin-valiantai/30min" target="_blank" style="color:var(--accent);">Join the Waitlist.</a></p>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-header"><div class="tier-badge">Tier 3</div><div class="tier-name">Full AI Growth System</div><div class="tier-tagline">The complete done-for-you system. Every channel. Fully managed.</div></div>
+        <div class="tier-body">
+          <div class="tier-price">Setup from $3,000</div><div class="tier-price-sub">Monthly retainer from $2,000/month</div>
+          <p class="tier-includes">Everything in Tier 1 and 2 plus</p>
+          <ul class="tier-list">
+            <li>Full GBP management and optimization</li>
+            <li>Website and funnel - built and managed</li>
+            <li>AI appointment setting - fully integrated and running 24/7</li>
+            <li>Email nurture sequences - Long-term campaigns that educate, build trust, and convert leads over time</li>
+            <li>AI chatbot built and embedded on your website</li>
+            <li>Review generation and reputation management</li>
+            <li>Monthly ranking and performance report</li>
+            <li>Full system audit every 90 days</li>
+          </ul>
+          <p class="tier-launch">Best for: Law firms, medical practices, and high-ticket service businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <p class="section-label">Add-Ons</p>
+      <h3 style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:#ffffff;margin-bottom:0.5rem;">Enhance Any Package</h3>
+      <p style="font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem;">Available as standalone services or added to any tier.</p>
+      <div class="addon-grid">
+        <div class="addon-card"><div><div class="addon-name">Review Generation Sprint</div><div class="addon-desc">3 text message templates written in the owner's voice. Clients send to past customers. Most see 10 to 30 new reviews within two weeks.</div></div><div class="addon-price">$500</div></div>
+        <div class="addon-card"><div><div class="addon-name">60-Second AI Promo Video</div><div class="addon-desc">A branded 60-second promotional video built from the client's reviews and service information. Ready to use on their website and social media.</div></div><div class="addon-price">$350</div></div>
+        <div class="addon-card"><div><div class="addon-name">Social Media Profile Setup and Optimization</div><div class="addon-desc">Full setup or optimization of Facebook, Instagram, LinkedIn, and GBP profiles. Branded visuals, keyword-rich bios, and consistent NAP across all platforms.</div></div><div class="addon-price">$500</div></div>
+        <div class="addon-card"><div><div class="addon-name">Monthly Social Media Content and Posting</div><div class="addon-desc">12 posts per month across 3 platforms. Written, designed, and scheduled. Fully managed so the client never has to think about content again.</div></div><div class="addon-price">From $600/mo</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;padding:2rem 2.5rem;background:rgba(13,0,32,0.7);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+      <div>
+        <p style="font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--text-primary);margin-bottom:0.4rem;">Not sure which tier is right for you?</p>
+        <p style="font-size:1.2rem;color:var(--text-muted);">Book a free 15-minute Consultation. We will diagnose exactly what your business needs.</p>
+      </div>
+      <a href="https://calendly.com/admin-valiantai/30min" target="_blank" class="btn-primary" style="white-space:nowrap;">Book a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="case-study" id="case">
+  <div class="section-inner">
+    <p class="section-label">Proof of Work</p>
+    <h2 class="section-title">Real Systems. Real Results.</h2>
+    <p class="section-sub">Real systems built across multiple industries. Every one Done-For-You.</p>
+    <div class="case-tabs">
+      <button class="case-tab active" onclick="showCase('cs1',this)">TNFG</button>
+      <button class="case-tab" onclick="showCase('cs2',this)">Real Estate</button>
+      <button class="case-tab" onclick="showCase('cs3',this)">Affiliate Marketing</button>
+      <button class="case-tab" onclick="showCase('cs4',this)">Digital Marketing</button>
+      <button class="case-tab" onclick="showCase('cs5',this)">Recruitment Agency</button>
+      <button class="case-tab" onclick="showCase('cs6',this)">Legal and Business</button>
+      <button class="case-tab" onclick="showCase('cs7',this)">UGC + Content</button>
+    </div>
+
+    <div class="case-panel active" id="cs1"><div class="case-card"><div>
+      <p class="case-label">True North Finance Group - CFO Advisory</p>
+      <h3 class="case-title">Full Client Acquisition System. Built in Under 30 Days.</h3>
+      <p class="case-desc">True North Finance Group needed a complete client acquisition system from the ground up. Brand, funnel, content engine, lead magnets, email nurture sequences, and full automation - all connected and live in under 30 days.</p>
+      <p class="case-desc" style="color:var(--accent);">The result: a fully automated lead generation and nurture system that works around the clock to bring qualified SMB owners to a Right Fit Call.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Website - GBP - Landing page - Sales funnel - Email nurture sequences - Lead magnets - CRM - Social media content - Webinar funnel - Appointment Setting - Full Brand System</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">tnfg_webinar</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">tnfg_scorecard</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">tnfg_guide</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">tnfg_diagnostic</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">30</span><span class="result-label">Days from zero to live</span></div>
+      <div class="result-item"><span class="result-value">100%</span><span class="result-label">Built from scratch</span></div>
+      <div class="result-item"><span class="result-value">6+</span><span class="result-label">Automated systems</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Fully done for them</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs2"><div class="case-card-sm"><div>
+      <p class="case-label">Tresvalles Ortiz Real Estate Empire - Keller Williams</p>
+      <h3 class="case-title">Real Estate Agent Brand. Full Marketing and Lead Gen System.</h3>
+      <p class="case-desc">Built the complete marketing and client acquisition system for a licensed NJ real estate agent and listing specialist. Brand identity, lead magnets, content creation, and digital presence - everything designed to attract serious buyers and sellers.</p>
+      <p class="case-desc" style="color:var(--accent);">Full suite of lead magnet guides, branded marketing materials, and a sales funnel designed to convert cold traffic into consultations.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Website - GBP - Landing page - Sales funnel - Email nurture sequences - Lead magnets - CRM - Social media content - Appointment Setting - Digital marketing materials and templates - Full Brand System</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">re_expert_tips</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">re_cash_offer</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">re_seller_tips</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">3+</span><span class="result-label">Lead magnets</span></div>
+      <div class="result-item"><span class="result-value">100%</span><span class="result-label">From scratch</span></div>
+      <div class="result-item"><span class="result-value">NJ</span><span class="result-label">Licensed market</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Done for them</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs3"><div class="case-card-sm"><div>
+      <p class="case-label">Evergreen Affiliate Marketing - Tresvalles Ortiz Digital Empire</p>
+      <h3 class="case-title">Full-Stack Affiliate Marketing Business. Built and Scaled From Zero.</h3>
+      <p class="case-desc">Built a complete affiliate marketing business from scratch. Every component designed and operated independently - from offer selection and content creation through to paid Meta traffic and full funnel conversion.</p>
+      <p class="case-desc" style="color:var(--accent);">This is where the core Valiant AI methodology was born and proven. A business that generates revenue through systems - without a sales team.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Landing pages - Sales funnel - Affiliate system - CRM - Email sequences - Content creation - Meta ads - Full Brand System</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">aff_guide</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">aff_shorts</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">Meta</span><span class="result-label">Paid traffic</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Self-operated</span></div>
+      <div class="result-item"><span class="result-value">6+</span><span class="result-label">Systems built</span></div>
+      <div class="result-item"><span class="result-value">OG</span><span class="result-label">Origin blueprint</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs4"><div class="case-card-sm"><div>
+      <p class="case-label">Social Millions - Digital Marketing and Lead Generation</p>
+      <h3 class="case-title">Done-For-You Digital Marketing System. Heavy Meta Ads and Lead Gen.</h3>
+      <p class="case-desc">Built a complete digital marketing and client acquisition system including webinar funnels, lead generation pages, and automated follow-up sequences - driven by heavy Meta paid advertising campaigns.</p>
+      <p class="case-desc" style="color:var(--accent);">Full funnel from top-of-funnel Meta ads through webinar registration, follow-up automation, and conversion - all connected and running automatically.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Webinar funnel - Landing pages - Email sequences - CRM - Social media content - Meta paid ad campaigns - Full Brand System</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">dm_webinar</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">dm_ceo</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">dm_benefits</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">Meta</span><span class="result-label">Heavy paid ads</span></div>
+      <div class="result-item"><span class="result-value">100%</span><span class="result-label">From scratch</span></div>
+      <div class="result-item"><span class="result-value">5+</span><span class="result-label">Systems built</span></div>
+      <div class="result-item"><span class="result-value">Auto</span><span class="result-label">Fully automated</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs5"><div class="case-card-sm"><div>
+      <p class="case-label">Evergreen Recruitment and Employment Agency - Healthcare Staffing</p>
+      <h3 class="case-title">Healthcare Recruitment Agency. Full Digital Presence Built From Scratch.</h3>
+      <p class="case-desc">Built a complete digital presence and client acquisition system for a healthcare recruitment and employment agency specializing in nursing and allied health placements across all 50 states and internationally.</p>
+      <p class="case-desc" style="color:var(--accent);">A professional, credibility-first website and recruitment system that attracts both job seekers and employer clients without paid ads.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Multi-page website - GBP - Job seeker and employer landing pages - Application system - CRM - Appointment Setting - Email sequences - Full Brand System</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">recruit1</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">recruit2</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">Intl</span><span class="result-label">Global placement</span></div>
+      <div class="result-item"><span class="result-value">50+</span><span class="result-label">States + worldwide</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Done for them</span></div>
+      <div class="result-item"><span class="result-value">0</span><span class="result-label">Paid ads needed</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs6"><div class="case-card-sm"><div>
+      <p class="case-label">Ortiz and Associates Legal and Business Services</p>
+      <h3 class="case-title">Legal and Business Services Firm. Complete Digital System.</h3>
+      <p class="case-desc">Built the complete digital presence and client acquisition system for a legal and business services firm serving clients across the USA. Credibility-first positioning with a clear path from visitor to consultation.</p>
+      <p class="case-desc" style="color:var(--accent);">Strong authority positioning that converts cold traffic into consultation inquiries. No paid ads required.</p>
+      <p class="case-desc" style="color:var(--text-muted);">What we built: Website - Landing pages - Service pages - CRM - Email sequences - Social media content - Full Brand System</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">legal2</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">legal1</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">USA</span><span class="result-label">Nationwide reach</span></div>
+      <div class="result-item"><span class="result-value">Pro</span><span class="result-label">Authority positioning</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Done for them</span></div>
+      <div class="result-item"><span class="result-value">0</span><span class="result-label">Paid ads needed</span></div>
+    </div></div></div>
+
+    <div class="case-panel" id="cs7"><div class="case-card-sm"><div>
+      <p class="case-label">Kitty Tresor - UGC Creator and Content Strategist</p>
+      <h3 class="case-title">Professional UGC Content Creation Across 10+ Content Categories.</h3>
+      <p class="case-desc">Built and operated a full UGC content creation practice. Producing high-converting video content across multiple formats - from product demos and storytelling ads to lifestyle, unboxing, and long-form Facebook ad content.</p>
+      <p class="case-desc" style="color:var(--accent);">Categories: Problem/Solution, Script Reading, Product Demo, Storytelling, Voiceover, FB Ad CTA Long Form, Unboxing, Organic, Family, Lifestyle. Bilingual: English and Tagalog.</p>
+      <p class="case-desc" style="color:var(--text-muted);">Niches: Lifestyle - Wellness - Beauty - Family - Travel - Digital Business - Gen X specialist</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:1.5rem;"><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">ugc1</div><div style="width:100%;border-radius:8px;border:1px solid rgba(245,192,24,0.2);display:block;object-fit:contain;margin-bottom:1rem;background:rgba(245,192,24,0.1);border-radius:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">ugc2</div></div>
+    </div><div class="case-results">
+      <div class="result-item"><span class="result-value">10+</span><span class="result-label">Content categories</span></div>
+      <div class="result-item"><span class="result-value">2</span><span class="result-label">Languages</span></div>
+      <div class="result-item"><span class="result-value">GenX</span><span class="result-label">Audience specialist</span></div>
+      <div class="result-item"><span class="result-value">DFY</span><span class="result-label">Full content system</span></div>
+    </div></div></div>
+
+  </div>
+</section>
+
+<section id="credentials" style="border-top:1px solid var(--border);">
+  <div class="section-inner">
+    <p class="section-label">Certifications</p>
+    <h2 class="section-title">Formally Trained. Field Tested.</h2>
+    <p class="section-sub">14+ certifications across Meta advertising, social media, AI tools, funnels, and brand building - plus a JD and a New Jersey real estate license.</p>
+    <div class="creds-grid">
+      <div class="cred-card"><p class="cred-category">Systems, AI and Brand Certifications</p><ul class="cred-list"><li>AI Tools and Strategies</li><li>Your Sales Funnel</li><li>Canva Creations for Your Brand</li><li>Faceless Marketing</li><li>Setting Up Your Domain and Email</li><li>Using Your Admin System</li></ul></div>
+      <div class="cred-card"><p class="cred-category">Meta and Facebook Certifications</p><ul class="cred-list"><li>Setting Up Your Facebook Business Page</li><li>Engagement Campaign - Messages or Existing Post</li><li>Facebook/Meta Disabled or Restricted</li><li>Your First Campaign - Page Likes and Follows</li><li>Facebook/Meta Go-Lives and Streamyard</li><li>Ad Building 101</li></ul></div>
+      <div class="cred-card"><p class="cred-category">Instagram and Social Media Certifications</p><ul class="cred-list"><li>Creating Instagram Reels and Stories</li><li>Instagram Features</li><li>Setting Up for Marketing on Instagram</li><li>Marketing on TikTok</li><li>LinkedIn Free Lead Generation Training</li><li>Warm Marketing 101</li></ul></div>
+      <div class="cred-card"><p class="cred-category">Professional Credentials</p><ul class="cred-list"><li>Juris Doctor (JD)</li><li>Licensed Real Estate Agent - New Jersey</li><li>Facebook Mastery - Engagement Campaigns (Certified)</li><li>UGC Creator and Creative Strategist</li><li>Digital Marketing and Ads Specialist</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <p class="section-label" style="text-align:center;">Ready to Build?</p>
+    <h2 class="cta-title">Your Client Acquisition System Starts Here</h2>
+    <p class="cta-sub">Book a FREE 15-minute Consultation. We will diagnose exactly what your business needs.</p>
+    <a href="https://calendly.com/admin-valiantai/30min" target="_blank" class="btn-primary">Book Your Consultation</a>
+    <p style="margin-top:1.5rem;margin-bottom:2.5rem;font-size:1rem;color:#ffffff;">Not ready to book? Send us a message below and we will be in touch within 24 hours.</p>
+    <form action="https://formspree.io/f/xeenzjzd" method="POST" style="text-align:left;max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;padding:2.5rem;box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Full Name</label>
+          <input type="text" name="name" required placeholder="Your full name" style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'"/>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Business Name</label>
+          <input type="text" name="business" required placeholder="Your business name" style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'"/>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Email Address</label>
+          <input type="email" name="email" required placeholder="your@email.com" style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'"/>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Phone (Optional)</label>
+          <input type="tel" name="phone" placeholder="Your phone number" style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'"/>
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">Business Type</label>
+        <select name="business_type" required style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'">
+          <option value="" disabled selected>Select your business type</option>
+          <option value="Real Estate">Real Estate Agent or Brokerage</option>
+          <option value="Law Office">Law Office</option>
+          <option value="Medical Practice">Medical Practice</option>
+          <option value="Financial Services">Financial Services</option>
+          <option value="Recruitment Agency">Recruitment Agency</option>
+          <option value="Small Business">Small Business</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:block;font-size:0.82rem;font-weight:600;color:#333333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem;">What Are You Looking to Build?</label>
+        <textarea name="message" required placeholder="Tell us about your business and what you need..." rows="4" style="width:100%;background:#ffffff;border:2px solid var(--accent);border-radius:6px;padding:0.85rem 1rem;color:#111111;font-family:var(--font-body);font-size:1rem;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(245,192,24,0.2)'"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;font-size:1rem;">Send Message</button>
+      <p style="text-align:center;margin-top:1rem;font-size:0.88rem;color:#333333;">We respond within 24 hours. No spam. Ever.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VALIANT <span>AI</span></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#tiers">Tiers</a></li>
+    <li><a href="#case">Case Studies</a></li>
+    <li><a href="#credentials">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem;">
+    <span class="footer-copy">Powered by Ortiz Tresvalles Global Ventures, LLC.</span>
+    <span class="footer-copy"><a href="mailto:admin.valiantai@gmail.com" style="color:var(--accent);text-decoration:none;">admin.valiantai@gmail.com</a></span>
+    <span class="footer-copy"><a href="https://canva.link/yzxli3fw9jcpn6g" target="_blank" style="color:var(--text-muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">Terms and Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script>
+function showCase(id,btn){
+  document.querySelectorAll(".case-panel").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".case-tab").forEach(t=>t.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  btn.classList.add("active");
+}
+</script>
+</body>
+</html>
